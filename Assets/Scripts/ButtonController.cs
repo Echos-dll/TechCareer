@@ -3,7 +3,9 @@ using UnityEngine.UI;
 
 public class ButtonController : MonoBehaviour
 {
-    [SerializeField] private Image m_image;
+    //Button scripts conflict
+    [SerializeField] private Image m_Image;
+
     private Button m_button;
     
     private void Awake()
@@ -13,7 +15,7 @@ public class ButtonController : MonoBehaviour
 
     private void ImageToggle()
     {
-       m_image.gameObject.SetActive(!m_image.gameObject.activeInHierarchy);
+        m_Image.gameObject.SetActive(!m_Image.gameObject.activeInHierarchy);
     }
 
     private void OnEnable()
