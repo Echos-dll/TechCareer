@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class ButtonController : MonoBehaviour
 {
-    //Button scripts conflict
+    //Button Controller script pull test
     [SerializeField] private Image m_Image;
 
     private Button m_button;
