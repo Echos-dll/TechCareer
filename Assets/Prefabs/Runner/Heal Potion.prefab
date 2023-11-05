@@ -80,10 +80,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 587ff21213f8fe741918c51a80d57fa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healAmount: 1
   _particleSystem: {fileID: 4925776938455875965}
-  healAudio: {fileID: 11400000, guid: 1286b945eff116c4d86df843a9ac699c, type: 2}
-  AudioSource: {fileID: 6635630268670928264}
+  audioEffect: {fileID: 11400000, guid: 1286b945eff116c4d86df843a9ac699c, type: 2}
+  _healthChangeAmount: 1
 --- !u!65 &2711017194870360892
 BoxCollider:
   m_ObjectHideFlags: 0

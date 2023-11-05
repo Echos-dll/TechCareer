@@ -80,10 +80,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5af27f123a99f9446927892462309614, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageAmount: 1
   _particleSystem: {fileID: 4918922927740165987}
-  damageAudio: {fileID: 11400000, guid: 5348a9fa79f96ae4bb9fc2fc64b50499, type: 2}
-  AudioSource: {fileID: -6944887544356250333}
+  audioEffect: {fileID: 11400000, guid: 5348a9fa79f96ae4bb9fc2fc64b50499, type: 2}
+  _healthChangeAmount: 1
 --- !u!65 &48061716233482392
 BoxCollider:
   m_ObjectHideFlags: 0
