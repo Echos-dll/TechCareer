@@ -13,6 +13,8 @@ namespace Merge
         [SerializeField] private Vector2 _spawnAreaY;
 
         private ObjectPool<MergeActor> m_actorPool;
+        
+        public ObjectPool<MergeActor> ActorPool => m_actorPool;
 
         private void Awake()
         {

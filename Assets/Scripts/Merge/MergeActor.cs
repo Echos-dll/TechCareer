@@ -11,6 +11,7 @@ namespace Merge
         [SerializeField] private int _actorIndex;
         [SerializeField] private MaterialSettings _materialSettings;
         [SerializeField] private Renderer _renderer;
+        public int ActorIndex => _actorIndex;
         
         private Rigidbody m_rigidbody;
         private Color defaultColor;
@@ -37,6 +38,12 @@ namespace Merge
         private void SetMaterial()
         {
             _renderer.material = _materialSettings._materials[_actorIndex];
+        }
+
+        public void TogglePhysics(bool toggle)
+        {
+            m_rigidbody.useGravity = toggle;
+            m_rigidbody.isKinematic = !toggle;
         }
     }
 }
