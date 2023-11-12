@@ -14,7 +14,7 @@ namespace UI
             {                
                 Image image = _healthBoxes[i];
 
-                if (i <= health.value - 1)
+                if (i <= health.Value - 1)
                 {
                     image.enabled = true;
                 }

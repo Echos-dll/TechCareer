@@ -6,7 +6,13 @@ public class IntegerValue : ScriptableObject
 {
     public int value;
     private Action _onValueChanged;
-    
+
+    public int Value
+    {
+        get { return value; }
+        set { SetValue(value); }
+    }
+
     public void SetValue(int value)
     {
         this.value = value;

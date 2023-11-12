@@ -10,10 +10,10 @@ namespace Player
         public void TakeDamage(int damage)
         {
             Debug.Log($"Damage taken amount: {damage}");
-            int newHealth = health.value - damage;
+            int newHealth = health.Value - damage;
             health.SetValue(newHealth);
             
-            if (health.value <= 0)
+            if (health.Value <= 0)
             {
                 //Fail condition
                 Destroy(gameObject);
@@ -22,13 +22,13 @@ namespace Player
     
         public void Heal(int healAmount)
         {
-            if (health.value >= 3)
+            if (health.Value >= 3)
             {
                 Debug.Log($"Health.value is full: {healAmount}");
                 return;
             }
             
-            int newHealth = health.value + healAmount;
+            int newHealth = health.Value + healAmount;
             health.SetValue(newHealth);
             Debug.Log($"Healed amount: {healAmount}");
             //health.value += healAmount;
