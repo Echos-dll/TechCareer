@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using DG.Tweening;
+using Editor;
 using Merge;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -43,7 +44,9 @@ public class MergeArea : MonoBehaviour
         {
             Tile newTile = Instantiate(tilePrefab, transform);
             _tiles[i] = newTile;
+            
             newTile.transform.localPosition = startPos + new Vector3(i * _spaceAmount, .5f, 0);
+            newTile.transform.AddPositionX(3);
         }
     }
 

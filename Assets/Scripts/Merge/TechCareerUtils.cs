@@ -1,0 +1,46 @@
+﻿using UnityEngine;
+
+namespace Editor
+{
+    public static class TechCareerUtils
+    {
+//         [MenuItem("Tools/TechCareer/Load EditorTools Level")]
+//         private static void denemetest()
+//         {
+//             EditorSceneManager.OpenScene("Assets/Scenes/EditorTools.unity");
+//         }
+// //         % – CTRL on Windows / CMD on OSX
+// //         # – Shift
+// //         & – Alt
+// //         LEFT/RIGHT/UP/DOWN – Arrow keys
+// //         F1…F2 – F keys
+// //         HOME, END, PGUP, PGDN
+//         
+//         [MenuItem("Tools/TechCareer/Print Message %#p")]
+//         private static void PrintMessage()
+//         {
+//             Debug.Log("Test");
+//         }
+
+        public static void AddPositionX(this Transform t, float value)
+        {
+            Vector3 p = t.position;
+            p.x += value;
+            t.position = p;
+        }
+
+        public static void AddPositionY(this Transform t, float value)
+        {
+            Vector3 p = t.position;
+            p.y += value;
+            t.position = p;
+        }
+
+        public static void AddPositionZ(this Transform t, float value)
+        {
+            Vector3 p = t.position;
+            p.z += value;
+            t.position = p;
+        }
+    }
+}
