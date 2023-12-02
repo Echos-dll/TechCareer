@@ -10,7 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f968d705afb42ea43bafa44a12517fc5, type: 3}
-  m_Name: Banana
+  m_Name: "Any D\u0131nner 1"
   m_EditorClassIdentifier: 
-  _ResourceItem: {fileID: 6281022781759943739, guid: 98b5f8376172bd949b55fb3acd5465aa, type: 3}
+  _ResourceItem:
+  - {fileID: 11400000, guid: bc20a229c2faa9f46adfc758daed6275, type: 2}
+  - {fileID: 11400000, guid: 5f1d22a381e560d43aa3d6d487905134, type: 2}
+  - {fileID: 11400000, guid: 91f08cd9849e353419c4cc971e696bee, type: 2}
   _GenerateTime: 10

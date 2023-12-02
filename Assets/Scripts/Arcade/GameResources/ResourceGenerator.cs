@@ -48,7 +48,7 @@ namespace Arcade.GameResources
 
         private void GenerateItem()
         {
-            HoldingItem = Instantiate(_receipt._ResourceItem, _generatePoint.position, Quaternion.identity);
+            HoldingItem = Instantiate(_receipt._ResourceItem[0]._worldItemPrefab.GetComponent<ResourceItem>(), _generatePoint.position, Quaternion.identity);
         }
 
         private void StartGenerator()

@@ -1,4 +1,5 @@
 using Arcade.GameResources;
+using ScriptableObjects.ARPG_Inventory;
 using UnityEngine;
 
 namespace Arcade
@@ -6,7 +7,7 @@ namespace Arcade
     [CreateAssetMenu(fileName = "New Receipt", menuName = "Arcade/Receipt")]
     public class Receipt : ScriptableObject
     {
-        public ResourceItem _ResourceItem;
+        public ItemData[] _ResourceItem;
         public float _GenerateTime;
     }
 }

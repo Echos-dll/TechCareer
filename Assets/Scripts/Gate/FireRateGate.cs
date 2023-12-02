@@ -6,7 +6,6 @@ namespace Gate
     {
         protected override void UpdateCurrentText()
         {
-            Debug.Log("Deneme");
             _currentValueText.text = "Fire Rate\n" + (Mathf.Sign(CurrentTextValue) >= 0 ? "+" : "") + CurrentTextValue;
         }
 

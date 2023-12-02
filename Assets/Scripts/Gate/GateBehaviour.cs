@@ -1,6 +1,8 @@
+using System;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 
 namespace Gate
@@ -89,6 +91,13 @@ namespace Gate
                 CurrentValue = m_currentValue + ChangeValue;
                 UpdateMaterial();
             }
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+            Collider box = GetComponent<BoxCollider>();
+            Gizmos.DrawWireCube(box.bounds.center, box.bounds.size);
         }
     }
 }
