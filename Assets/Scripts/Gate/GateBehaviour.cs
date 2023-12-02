@@ -1,3 +1,5 @@
+using DG.Tweening;
+using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
 
@@ -6,19 +8,25 @@ namespace Gate
     public abstract class GateBehaviour : MonoBehaviour
     {
         [Header("References")]
-        [SerializeField] private TextMeshPro _currentValueText;
-        [SerializeField] private TextMeshPro _changeValueText;
-        
+        [SerializeField] protected TextMeshPro _currentValueText;
+        [SerializeField] protected TextMeshPro _changeValueText;
+        [SerializeField] private Renderer _gateRenderer;
+        [SerializeField] private Color _positiveColor;
+        [SerializeField] private Color _negativeColor;
+         
         [Header("Settings")]
-        [SerializeField] private int _changeValue;
+        [SerializeField, OnValueChanged("UpdateChangeText")] private int _changeValue;
+        [SerializeField] protected float _gateMultiplier;
         
-        private int m_currentValue;
+        private float m_currentValue;
+        //private int m_currentChangeValue;
+        private Tween m_colorChangeTween;
 
-        public int CurrentValue
+        protected float CurrentValue
         {
             get
             {
-                return m_currentValue;
+                return m_currentValue * _gateMultiplier;
             }
             set
             {
@@ -27,29 +35,59 @@ namespace Gate
             }
         }
         
-        protected int ChangeValue => _changeValue;
+        protected int CurrentTextValue
+        {
+            get
+            {
+                return Mathf.RoundToInt(m_currentValue);
+            }
+        }
+        
+        protected int ChangeValue
+        {
+            get
+            {
+                return _changeValue;
+            }
+            set
+            {
+                _changeValue = value;
+                UpdateChangeText();
+            }
+        }
 
         protected virtual void Start()
         {
+            CurrentValue = -5;
             UpdateChangeText();
             UpdateCurrentText();
+            _gateRenderer.material.color = CurrentTextValue >= 0 ? _positiveColor : _negativeColor;
         }
 
         private void UpdateChangeText()
         {
-            _changeValueText.text = (Mathf.Sign(_changeValue) >= 0 ? "+" : "-") + _changeValueText;
+            _changeValueText.text = (Mathf.Sign(ChangeValue) >= 0 ? "+" : "-") + ChangeValue;
         }
-        
-        private void UpdateCurrentText()
+
+        private void UpdateMaterial()
         {
-            _currentValueText.text = (Mathf.Sign(m_currentValue) >= 0 ? "+" : "-") + m_currentValue;
+            Color targetColor = CurrentTextValue >= 0 ? _positiveColor : _negativeColor;
+            if (m_colorChangeTween == null && _gateRenderer.material.color != targetColor)
+            {
+                m_colorChangeTween = _gateRenderer.material.DOColor(targetColor, .5f);
+                //_gateRenderer.material.Lerp(_gateRenderer.material, targetMaterial, .5f);
+            }
+            //_gateRenderer.material = CurrentTextValue >= 0 ? _positiveMaterial : _negativeMaterial;
         }
+
+        protected abstract void UpdateCurrentText();
 
         protected virtual void OnTriggerEnter(Collider other)
         {
             if (other.TryGetComponent(out Bullet _))
             {
-                CurrentValue += ChangeValue;
+                CurrentValue = m_currentValue + ChangeValue;
+                UpdateMaterial();
             }
         }
     }

@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Gate
 {
@@ -7,8 +6,8 @@ namespace Gate
     {
         [SerializeField] private Bullet _bulletPrefab;
         [SerializeField] private Transform _shootingPoint;
-        public int FireRate { get; set; } = 1;
-        public int Range { get; set; }
+        public float FireRate { get; set; } = 1;
+        public float Range { get; set; } = 5;
 
         private float m_Timer;
         
@@ -26,14 +25,15 @@ namespace Gate
             else
             {
                 m_Timer += Time.deltaTime;
-                m_Timer = 0;
             }
         }
 
         private void Shoot()
         {
             Bullet bullet = Instantiate(_bulletPrefab, _shootingPoint.transform.position, _shootingPoint.transform.rotation);
-            bullet.transform.LookAt(transform.forward);
+            bullet.transform.LookAt(_shootingPoint.position + _shootingPoint.transform.forward);
+            bullet.Init(Range);
+            m_Timer = 0;
         }
         
         private float GetFireRate()

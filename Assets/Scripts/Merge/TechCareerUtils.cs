@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Editor
 {
@@ -22,6 +24,9 @@ namespace Editor
 //             Debug.Log("Test");
 //         }
 
+        private static PointerEventData s_eventDataCurrentPosition;
+        private static List<RaycastResult> s_results;
+        
         public static void AddPositionX(this Transform t, float value)
         {
             Vector3 p = t.position;
@@ -41,6 +46,22 @@ namespace Editor
             Vector3 p = t.position;
             p.z += value;
             t.position = p;
+        }
+        
+        public static bool IsOverUI()
+        {
+            s_eventDataCurrentPosition = new PointerEventData(EventSystem.current) { position = Input.mousePosition };
+            s_results = new List<RaycastResult>();
+            EventSystem.current.RaycastAll(s_eventDataCurrentPosition, s_results);
+            return s_results.Count > 0;
+        }
+        
+        public static GameObject UIRaycast (PointerEventData pointerData)
+        {
+            var results = new List<RaycastResult>();
+            EventSystem.current.RaycastAll(pointerData, results);
+ 
+            return results.Count < 1 ? null : results[0].gameObject;
         }
     }
 }

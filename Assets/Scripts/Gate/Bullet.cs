@@ -23,5 +23,10 @@ namespace Gate
             
             transform.Translate(Time.deltaTime * _speed * Vector3.forward);
         }
+
+        public void Init(float range)
+        {
+            _range = range;
+        }
     }
 }
