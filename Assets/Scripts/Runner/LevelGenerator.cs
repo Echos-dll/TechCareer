@@ -1,4 +1,5 @@
 using Collectables;
+using Runner.Collectables;
 using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour

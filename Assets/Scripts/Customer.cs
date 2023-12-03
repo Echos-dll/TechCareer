@@ -4,6 +4,7 @@ using Arcade;
 using Arcade.GameResources;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using Random = UnityEngine.Random;
 
 namespace DefaultNamespace

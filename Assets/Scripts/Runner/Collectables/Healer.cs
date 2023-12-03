@@ -1,7 +1,8 @@
+using Collectables;
 using Player;
 using UnityEngine;
 
-namespace Collectables
+namespace Runner.Collectables
 {
     public class Healer : HealthChangerItems
     {

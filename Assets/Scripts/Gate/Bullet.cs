@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Gate
 {
@@ -8,6 +9,7 @@ namespace Gate
         [SerializeField] private float _range;
         
         private Vector3 m_StartingPosition;
+        private ObjectPool<Bullet> m_Pool;
 
         private void Start()
         {
@@ -18,12 +20,25 @@ namespace Gate
         {
             if (Vector3.Distance(m_StartingPosition, transform.position) > _range)
             {
-                Destroy(gameObject);
+                if (m_Pool == null)
+                {
+                    Destroy(gameObject);
+                }
+                else
+                {
+                    m_Pool.Return(this);
+                }
             }
             
             transform.Translate(Time.deltaTime * _speed * Vector3.forward);
         }
 
+        public void Init(float range, ObjectPool<Bullet> pool)
+        {
+            _range = range;
+            m_Pool = pool;
+        }
+        
         public void Init(float range)
         {
             _range = range;

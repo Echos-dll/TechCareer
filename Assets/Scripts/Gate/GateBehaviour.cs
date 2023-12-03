@@ -1,4 +1,5 @@
 using System;
+using Collectables;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using TMPro;
